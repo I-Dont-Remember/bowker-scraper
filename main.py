@@ -1,7 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
+import urllib2
+from subjects import subject_list
 
-# parsed querystring 
+# parsed querystring
 # {'q': ['subject-all=[Conduct of Life] {{(publisher-date=[2000-01-01~To~2000-12-31])}}'], 'ast': ['se']}
 old = "http://www.booksinprint.com.ezproxy.library.wisc.edu/Search/Results?q=subject-all%3D[Conduct%20of%20Life]%20%7B%7B(publisher-date%3D[2000-01-01~To~2000-12-31])%7D%7D&ast=se"
 # print(parse_qs("q=subject-all%3D[Conduct%20of%20Life]%20%7B%7B(publisher-date%3D[2000-01-01~To~2000-12-31])%7D%7D&ast=se"))
@@ -39,13 +41,28 @@ def main():
 
 # fat file, so it takes a long time for BeautifulSoup to load it in,
 # if this needs to be run a lot would want to find a way to minimize time/downloads
+"""
+    # possibly use urllib2 to get page straight from website not a file
+    page = urllib2.urlopen(old)
+    soup = BeautifulSoup(page, "html.parser")
+    print soup
+    # <span id="resultsCount">Showing 1- 25 of 889</span>
+    result_span = soup.find("span", {"id": "resultsCount"})
+    words = result_span.text
+    words_split = words.split(" ")
+    total = words_split[-1]
+
+    print("Total: " + total)
+"""
+
     with open("example.html", "rb") as f:
         soup = BeautifulSoup(f, "html.parser")
 
         # <span id="resultsCount">Showing 1- 25 of 889</span>
         result_span = soup.find("span", {"id": "resultsCount"})
         words = result_span.text
-        total = words[-1]
+        words_split = words.split(" ")
+        total = words_split[-1]
 
         print("Total: " + total)
 
