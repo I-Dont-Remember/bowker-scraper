@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+import cookielib
+import urllib
 import urllib2
 from subjects import subject_list
 
@@ -41,8 +43,39 @@ def main():
 
 # fat file, so it takes a long time for BeautifulSoup to load it in,
 # if this needs to be run a lot would want to find a way to minimize time/downloads
-"""
+
     # possibly use urllib2 to get page straight from website not a file
+    # couldn't get the cookies to work ends in SSL: CERTIFICATE_VERIFY_FAILED
+    # https://stackoverflow.com/questions/13925983/login-to-website-using-urllib2-python-2-7
+"""
+    # Store the cookies and create an opener that will hold them
+    cj = cookielib.CookieJar()
+    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+
+    # Add our headers
+    opener.addheaders = [('User-agent', 'LibraryTesting')]
+
+    # Install our opener (note that this changes the global opener to the one
+    # we just made, but you can also just call opener.open() if you want)
+    urllib2.install_opener(opener)
+
+    # The action/ target from the form
+    authentication_url = 'https://account.library.wisc.edu'
+
+    # Input parameters we are going to send
+    payload = {
+    'op': 'login-main',
+    'user': '<username>',
+    'passwd': '<password>'
+    }
+
+    # Use urllib to encode the payload
+    data = urllib.urlencode(payload)
+
+    # Build our Request object (supplying 'data' makes it a POST)
+    req = urllib2.Request(authentication_url, data)
+
+    # Make the request and read the response
     page = urllib2.urlopen(old)
     soup = BeautifulSoup(page, "html.parser")
     print soup
