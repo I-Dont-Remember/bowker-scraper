@@ -1,0 +1,723 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="EN">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Books In Print:Search Results</title>
+    <link id="Link1" rel="shortcut icon" href='https://d3bowkl3v34ec5-cloudfront-net.ezproxy.library.wisc.edu/../Images/pq-favicon.ico?4.0.4.124'
+        type="image/x-icon" />
+    <link id="Link2" rel="icon" href='https://d3bowkl3v34ec5-cloudfront-net.ezproxy.library.wisc.edu/../Images/pq-favicon.ico?4.0.4.124'
+        type="image/ico" />
+    <script src="https://d3bowkl3v34ec5-cloudfront-net.ezproxy.library.wisc.edu/../../Scripts/jquery-1.7.1.js?4.0.4.124" type="text/javascript"></script>
+    <script src="https://d3bowkl3v34ec5-cloudfront-net.ezproxy.library.wisc.edu/../../Scripts/jquery-ui.min.js?4.0.4.124" type="text/javascript"></script>
+    <script src="https://d3bowkl3v34ec5-cloudfront-net.ezproxy.library.wisc.edu/bundles/TypeaheadJs?4.0.4.124"></script>
+
+    <script src="https://d3bowkl3v34ec5-cloudfront-net.ezproxy.library.wisc.edu/bundles/BootstrapJs?4.0.4.124"></script>
+
+
+    <script src='https://d3bowkl3v34ec5-cloudfront-net.ezproxy.library.wisc.edu/Scripts/jquery.blockUI.js?4.0.4.124' type="text/javascript"></script>
+    <script src='https://d3bowkl3v34ec5-cloudfront-net.ezproxy.library.wisc.edu/Scripts/jquery.cookie.js?4.0.4.124' type="text/javascript"></script>
+    <script src="https://d3bowkl3v34ec5-cloudfront-net.ezproxy.library.wisc.edu/bundles/JsUtilsJs?4.0.4.124"></script>
+
+    <script src="https://d3bowkl3v34ec5-cloudfront-net.ezproxy.library.wisc.edu/bundles/masterpage?4.0.4.124"></script>
+
+    <script src="https://d3bowkl3v34ec5-cloudfront-net.ezproxy.library.wisc.edu/bundles/SearchJs?4.0.4.124"></script>
+
+        <link href="../../CSS/uxf-1.0.0-blue.min.css?4.0.4.124" rel="stylesheet" type="text/css" />
+    <link href="../../CSS/BIP/masterpage.css?4.0.4.124" rel="stylesheet" type="text/css" />
+    <link href="../../CSS/BIP/common.css?4.0.4.124" rel="stylesheet" type="text/css" />
+    <link href="../../CSS/jquery-ui.css?4.0.4.124" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+    <header role="banner" id="top" class="docs-navbar navbar navbar-inverse navbar-static-top headermarginclass">
+<div class="navbar-header">
+    <button data-target=".bs-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
+            class="icon-bar"></span><span class="icon-bar"></span>
+    </button>
+    <ul class="nav navbar-nav">
+
+
+     </ul>
+</div>
+<div align="center">
+    <a href="#" tabindex="3" onclick="SetFocusToSrchBoxOnSkipClick();" class="skip">Skip Navigation</a>
+</div>
+<nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+<ul class="nav navbar-nav navbar-right">
+
+    <li class="dropdown">
+        <a href="#" tabindex="4" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class="uxf-icon uxf-user"></span> &nbsp;Welcome,&nbsp;University of Wisconsin - Madison<b class="caret"></b>
+        </a>
+          <ul class="dropdown-menu">
+            <li role="presentation"><a role="menuitem" id="myAccountLink" class="myAccountLink" onclick="getSelectedItems();"
+             href="#" tabindex="5">Account Settings</a></li>
+         </ul>
+    </li>
+    <li>                 <a  href="http://www.bowker.com/en-US/products/help/bip/" target="_blank" class="uxf-icon uxf-help-circle" tabindex="7"><span class="labelForScreenReader">Opens in new window</span></a>
+    </li>
+</ul>
+
+<div class="navbar-header">
+    <ul class="nav navbar-nav">
+            <li>
+                <div class="navbar-brand product-name">
+                    <a href="/Home/Index" class="navbar-brand product-name" tabindex="1">
+                        <img src="https://d3bowkl3v34ec5-cloudfront-net.ezproxy.library.wisc.edu/../../Images/BIP_Header_Icon_03.png?4.0.4.124" alt=""/>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="navbar-brand product-name">
+                    <div class="navbar-bip-su">
+                        <a tabindex="2" href="/Home/Index">Books In Print</a>
+                    </div>
+                </div>
+
+
+            </li>
+                    </ul>
+</div>
+
+<div role="navigationToMenus" class="nav navbar-nav navbar-below">
+        <ul class="nav navbar-nav">
+            <li ><a id="BiphomeLink" class="homeLink" href="/Home/Index" onclick="getSelectedItems();" tabindex="8">Home</a></li>
+            <li><a  id="BipAccountLink" class="myAccountLink" href="#" onclick="getSelectedItems();" tabindex="9">Administrator</a></li>
+            <li><a  id="BipbrowseLink" class="hidden-xs browseLink" href="/Browse/Index" onclick="getSelectedItems();" tabindex="10">Browse</a></li>
+
+            <li><a  id="BiplistLink" class="listLink" href="/List/Index" onclick="getSelectedItems();" tabindex="12">Staff Lists</a></li>
+            <li><a  id="publisherLink" href="/Publisher/Index" onclick="getSelectedItems();" tabindex="13">Publisher</a></li>
+        </ul>
+</div>
+ </nav>
+ </header>
+        <div id="divsearchBarContainer" class="row hidden-xs searchBackgroundImage">
+            <div class="col-md-1 col-sm-1 hidden-xs">
+            </div>
+            <div class="col-md-10 col-sm-11 col-xs-12 searchCenter">
+                <div class="form-inline" role="Search">
+                    <div class="searchBackground">
+                        <label for="searchTypeDesktop" class="labelForScreenReader">
+                            Search Type</label>
+                        <ul id="searchTypeDesktop" class="nav navbar-nav selectClass searchTypeStyle" tabindex="16"
+                            onkeypress="ExpandSearchType()">
+                            <li class="dropdown" onkeypress="ExpandSearchType()" id="searchdropdown"><a onkeypress="ExpandSearchType()"
+                                href="#" id="searchTextBoxLink" class="dropdown-toggle rclhref searchtypeclass"
+                                data-toggle="dropdown" tabindex="-1"><span id="selectedVal">All</span><b class="caret caretSearchType"></b></a>
+                                <ul id="searchTypeUl" class="dropdown-menu" role="menu">
+                                    <li data-value='quicksearch-all'><a href='#'>All</a></li><li data-value='quicksearch-subject'><a href='#'>Subject</a></li><li data-value='quicksearch-title'><a href='#'>Title</a></li><li data-value='quicksearch-author'><a href='#'>Author</a></li><li data-value='quicksearch-publisher'><a href='#'>Publisher</a></li><li data-value='quicksearch-seriestitle'><a href='#'>Series Title</a></li><li data-value='quicksearch-character'><a href='#'>Character</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <label for="txtSearch" class="labelForScreenReader">
+                            Text Search</label>
+                        <input class="form-control typeahead searchBoxWidthFludic searchTextBox" id="txtSearch" name="txtSearch" onkeydown="return Search_KeyPress(event);" placeholder=" Enter your query here... " type="text" value="" />
+                        <button type="button" title="search" id="searchButtonGO" onclick="return btnSearch_Click(event);"
+                            class="btn btn-default searchButton">
+                            <span class="uxf-icon uxf-search fontsize"></span>
+                        </button>
+                        &nbsp;<a id="advanceSearch" class="advanceSearch" onclick="getSelectedItems();" href="/AdvancedSearch/Index">
+                            Advanced Search</a>
+                    </div>
+                </div>
+            </div>
+            <div class="visible-md">
+            </div>
+        </div>
+        <div id="divsearchBarContainerMobile" class="row visible-xs searchBackgroundImage rowSpacing">
+            <div class="col-xs-10 input-group searchCenterMobile" id="mobileSearchArea" role="Search">
+                <div class="input-group-btn">
+                    <label for="mobileSearchType" class="labelForScreenReader">
+                        Search Type</label>
+                    <button type="button" id="mobileSearchType" class="btn btn-secondary dropdown-toggle mobilesearchheight mobilePaddingTop"
+                        data-toggle="dropdown">
+                        <span id="mobileSearchTypeText">All </span><span class="caret"></span>
+                    </button>
+                    <ul id="mobileSearchDropDown" class="dropdown-menu mobilePaddingTop" role="menu">
+                        <li data-value='quicksearch-all'><a href='#'>All</a></li><li data-value='quicksearch-subject'><a href='#'>Subject</a></li><li data-value='quicksearch-title'><a href='#'>Title</a></li><li data-value='quicksearch-author'><a href='#'>Author</a></li><li data-value='quicksearch-publisher'><a href='#'>Publisher</a></li><li data-value='quicksearch-seriestitle'><a href='#'>Series Title</a></li><li data-value='quicksearch-character'><a href='#'>Character</a></li></ul>
+                </div>
+                <label for="txtSearchMobile" class="labelForScreenReader">
+                    Text Search</label>
+                <input class="form-control typeahead mobileTypeAhead" id="txtSearchMobile" name="txtSearchMobile" onkeydown="return Search_KeyPress(event,&#39;txtSearchMobile&#39;);" placeholder="Enter your query here..." type="text" value="" />
+                <span class="input-group-btn">
+                    <button class="btn btn-default mobilePaddingTop" type="button" title="search" onclick="return btnSearch_Click(event,'txtSearchMobile');">
+                        <span class="uxf-icon uxf-search fontsizesearch"></span>
+                    </button>
+                </span>
+            </div>
+                <div>
+                    &nbsp; <a id="advanceSearchMobile" class="advanceSearch mobleAdvanceSearch pull-right"
+                        onclick="getSelectedItems()" href="/AdvancedSearch/Index">Advanced Search</a>
+                </div>
+        </div>
+    <div role="main">
+
+<link href="../../CSS/BIP/searchresults.css?4.0.4.124" rel="stylesheet" type="text/css" />
+<script src="https://d3bowkl3v34ec5-cloudfront-net.ezproxy.library.wisc.edu/../../Scripts/jsfcore.js?4.0.4.124" type="text/javascript"></script>
+<script src="https://d3bowkl3v34ec5-cloudfront-net.ezproxy.library.wisc.edu/../../Scripts/json2.js?4.0.4.124" type="text/javascript"></script>
+<script src="https://d3bowkl3v34ec5-cloudfront-net.ezproxy.library.wisc.edu/bundles/JsfcoreJs?4.0.4.124"></script>
+
+<script src="https://d3bowkl3v34ec5-cloudfront-net.ezproxy.library.wisc.edu/bundles/Json2Js?4.0.4.124"></script>
+
+<div class="container removePadding">
+    <h1 class="labelForScreenReader">
+        Books In Print: Search Results
+    </h1>
+        <div id="divNoresults" class="col-md-12 col-sm-12 col-xs-12">
+            <h2>
+                No results found</h2>
+            <p>
+                Your query did not produce any results. Try restating your query by using more,
+                other or broader terms.<br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+            </p>
+        </div>
+    <br />
+    <input type="hidden" id="hdnSelectedFacet" />
+    <input type="hidden" id="hdnSearchTerm" />
+    <input type="hidden" id="hdnShowSelected" value="N" />
+    <input type="hidden" id="hdnSearchType" />
+</div>
+<!-- Modal -->
+<div class="modal fade" id="ModalPopup" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h2 class="modal-title" id="ModalLabel">
+                </h2>
+            </div>
+            <div class="modal-body" id="user_content">
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.modal -->
+<!-- Add to list Modal-->
+<div class="modal fade" id="AddToListPopup" tabindex="-1" role="dialog" aria-labelledby="AddToListLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h2 class="modal-title" id="AddToListLabel">
+                </h2>
+            </div>
+            <div class="modal-body">
+                <div id="divListType" class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <label class="radio-inline">
+                            <input type="radio" name="AddtoList" id="rdBtnAddtoList" class="ListDropDownList"
+                                value="1" checked="checked" onclick="OnListTypeChange();" tabindex="20001" />
+                            <label for="rdBtnAddtoList">
+                                Add to Existing List</label>
+                        </label>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <label class="radio-inline">
+                            <input type="radio" name="AddtoList" id="rdBtnCreateList" value="2" tabindex="20002"
+                                class="ListDropDownList" onclick="OnListTypeChange();" />
+                            <label for="rdBtnCreateList">
+                                Create New List</label>
+                        </label>
+                    </div>
+                </div>
+                <div id="HorLine">
+                </div>
+                <div id="divExList">
+                    <table id="tblExListForm" role="presentation" class="listclass">
+                        <tr>
+                            <td colspan="2">
+                                <label>
+                                    Add to Existing List</label>
+                            </td>
+                        </tr>
+                        <tr id="trListPwdError" class="hideElement trListPwdError">
+                            <td colspan="2">
+                                <div id="divListPwdError" class="list-popup-validate fullWidth divListPwdError" align="center">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="hideElement trEmailMsg">
+                                <label class="fullWidth lblEmailSent">
+                                    &nbsp;Password reminder email sent.</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="tdSelectListName">
+                                <span>Select list Name:</span>
+                            </td>
+                            <td>
+                                <label for="ListDropDownList" class="labelForScreenReader">
+                                    Select List Name</label>
+                                <select id="ListDropDownList" name="ListDropDownList" class="form-control ListDropDownList"
+                                    onchange="CheckIsPwdProtected('AddtoList')" tabindex="20003">
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="marginBottom">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="trCheckListPwd" class="hideElement trCheckListPwd">
+                            <td>
+                                <label for="txtListPassword">
+                                    <span class="mandatory">*</span> List Password:
+                                </label>
+                            </td>
+                            <td>
+                                <div class="form-inline">
+                                    <input id="txtListPassword" class="form-control txtListPwdAddtoList" tabindex="20004"
+                                        type="password" />
+                                    <a href="javascript:void(0);" class="lnkForgotPwd" tabindex="20004" onclick="ForgotListPassword('AddtoList')">
+                                        Forgot Password</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="marginBottom">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                    <div id="div1" class="divButton" align="center">
+                        <table role="presentation">
+                            <tr>
+                                <td>
+                                    <input type="button" id="btnAddtoList" tabindex="20010" class="btn btn-default add"
+                                        value="Add to List" />&nbsp;&nbsp;
+                                </td>
+                                <td>
+                                    <input type="button" id="btnCancel" tabindex="20011" class="btn btn-secondary cancel"
+                                        value="Cancel" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="marginBottom">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div align="center" id="addProcessingMessage" class="list-popup-validate">
+                                        Processing, please wait...</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divConfirm" class="divConfirm" align="center">
+                        <div id="divConfirmMsg" class="divConfirmMsg">
+                        </div>
+                        <br />
+                        <table role="presentation">
+                            <tr>
+                                <td>
+                                    <input type="button" id="btnYes" tabindex="20010" class="btn btn-default add" value="Yes" />
+                                </td>
+                                <td>
+                                    <input type="button" id="btnNo" tabindex="20011" class="btn btn-secondary cancel"
+                                        value="No" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="marginBottom">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div align="center" id="addDupProcessingMessage" class="list-popup-validate">
+                                        Processing, please wait...</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divBacktoResult" class="divBacktoResult" align="center">
+                        <div id="divUserMsg" class="divUserMsg">
+                        </div>
+                        <br />
+                        <input id="btnSuccess" type="button" class="btn btn-default add" tabindex="20012"
+                            value="Back To Results" />
+                        &nbsp;<a id="btnDisplay" class="hideElement Display">Display</a>
+                    </div>
+                </div>
+                <div id="divCreateList">
+                    <div class="lst-dtls-font-style">
+                        <table id="tblCreateList" class="tblCreateList" role="presentation">
+                            <tr>
+                                <td colspan="2">
+                                    <label>
+                                        Create New List</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    Fields marked with <span class="mandatory">* </span>are mandatory
+                                    <br />
+                                    <br />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div id="divError" class="divError fullWidth" align="center">
+                                        <div id="divErrMsg" class="divErrMsg list-popup-validate">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="srch-rslts-lst-dialog">
+                                    Password Protected:
+                                </td>
+                                <td>
+                                    &nbsp;
+                                    <input id="PwdProtectCheckBox" tabindex="20004" type="checkbox" />
+                                    <label for="PwdProtectCheckBox" class="labelForScreenReader">
+                                        Password Protected</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="marginBottom">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="srch-rslts-lst-dialog">
+                                    <span class="mandatory">*</span> List Name:
+                                </td>
+                                <td>
+                                    <label for="ListNameTextBox" class="labelForScreenReader">
+                                        List Name</label>
+                                    <input type="text" id="ListNameTextBox" tabindex="20005" autocomplete="off" maxlength="30"
+                                        class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="marginBottom">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="pwdField">
+                                <td class="srch-rslts-lst-dialog">
+                                    <span class="mandatory">*</span> Password:
+                                </td>
+                                <td>
+                                    <label for="PasswordTextBox" class="labelForScreenReader">
+                                        Password</label>
+                                    <input id="PasswordTextBox" tabindex="20006" autocomplete="off" maxlength="15" type="Password"
+                                        class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="marginBottom">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="pwdField">
+                                <td class="srch-rslts-lst-dialog">
+                                    <span class="mandatory">*</span> Confirm:
+                                </td>
+                                <td>
+                                    <label for="ConfirmPasswordTextBox" class="labelForScreenReader">
+                                        Confirm Password</label>
+                                    <input id="ConfirmPasswordTextBox" tabindex="20007" autocomplete="off" type="Password"
+                                        maxlength="15" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="marginBottom">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="pwdField">
+                                <td class="srch-rslts-lst-dialog">
+                                    <span class="mandatory">*</span> Email:
+                                </td>
+                                <td>
+                                    <label for="EmailTextBox" class="labelForScreenReader">
+                                        Email</label>
+                                    <input id="EmailTextBox" tabindex="20008" autocomplete="off" maxlength="31" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="marginBottom">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="srch-rslts-lst-dialog">
+                                    Comments:
+                                </td>
+                                <td>
+                                    <label for="CommentTextBox" class="labelForScreenReader">
+                                        Comments</label>
+                                    <textarea cols="40" rows="4" id="CommentTextBox" tabindex="20009" class="form-control"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="marginBottom">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr align="center">
+                                <td class="srch-rslts-lst-dialog" align="center" colspan="2">
+                                    <br />
+                                    <table role="presentation">
+                                        <tr>
+                                            <td>
+                                                <input id="btnCreateList" onclick="btnCreateList()" type="button" tabindex="20010"
+                                                    class="btn btn-default add" value="Create List" />&nbsp;&nbsp;
+                                            </td>
+                                            <td>
+                                                <input id="btnCreateCancel" type="button" tabindex="20011" class="btn btn-secondary cancel"
+                                                    value="Cancel" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="marginBottom">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <div align="center" id="addNewProcessingMessage" class="list-popup-validate">
+                                                    Processing, please wait...</div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="divBackToResultCreateList" class="divBackToResultCreateList" align="center">
+                        <div id="divUserMsgCreateList" class="divUserMsgCreateList">
+                        </div>
+                        <br />
+                        <input id="btnSuccessCreateList" type="button" class="btn btn-default add" tabindex="20012"
+                            value="Back To Results" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="hdnJsonTagWords" name="hdnJsonTagWords" value="&lt;p id=&#39;tagList&#39;&gt;&lt;/p&gt;" />
+    <input type="hidden" id="hdnPagename" name="hdnPagename" value='Books in Print search item selection' />
+<!-- / Add to list Modal-->
+<script type="text/javascript">
+
+    $('h5').click(function () {
+        if ($(this).children(0).hasClass('uxf-icon uxf-down-open-large')) {
+            $(this).children(0).removeClass('uxf-icon uxf-down-open-large').addClass('uxf-icon uxf-up-open-large');
+        }
+        else if ($(this).children(0).hasClass('uxf-icon uxf-up-open-large')) {
+            $(this).children(0).removeClass('uxf-icon uxf-up-open-large').addClass('uxf-icon uxf-down-open-large');
+        }
+    });
+
+    $('h6').click(function () {
+        if ($(this).children(0).hasClass('uxf-icon uxf-down-open-large')) {
+            $(this).children(0).removeClass('uxf-icon uxf-down-open-large').addClass('uxf-icon uxf-up-open-large');
+        }
+        else if ($(this).children(0).hasClass('uxf-icon uxf-up-open-large')) {
+            $(this).children(0).removeClass('uxf-icon uxf-up-open-large').addClass('uxf-icon uxf-down-open-large');
+        }
+    });
+
+    $("div[id^='show_']").click(function () {
+        var id = this.id;
+        id = id.substr(id.indexOf('_'), id.length);
+        $('#hiddenContent' + id).slideDown();
+        $(this).hide();
+    });
+
+    $("div[id^='hide_']").click(
+        function () {
+            var id = this.id;
+            id = id.substr(id.indexOf('_'), id.length);
+            $('#hiddenContent' + id).slideUp();
+            $('#show' + id).show();
+        });
+
+    $('#toggleRefineSections').click(function () {
+        if ($('#mainContent.ShowRefineSectionsInTab').length == 0) {
+            $('#mainContent').addClass('ShowRefineSectionsInTab')
+            $('#facetsSection').removeClass('hidden-sm');
+            $('#facetsSection').addClass('col-sm-5');
+        }
+        else {
+            $('#mainContent').removeClass('ShowRefineSectionsInTab')
+            $('#facetsSection').removeClass('col-sm-5');
+            $('#facetsSection').addClass('hidden-sm');
+        }
+
+    });
+
+    $('#toggleRefineSectionsMobile').click(function () {
+        if ($('#mainContent.hidden-xs').length == 0) {
+            $('#mainContent').addClass('hidden-xs')
+            $('#facetsSection').removeClass('hidden-xs');
+
+        }
+        else {
+            $('#mainContent').removeClass('hidden-xs')
+            $('#facetsSection').addClass('hidden-xs');
+        }
+    });
+
+    $('#CloseRefineDiv').click(function () {
+        if ($('#mainContent.ShowRefineSectionsInTab').length == 0) {
+            $('#mainContent').addClass('ShowRefineSectionsInTab')
+            $('#facetsSection').removeClass('hidden-sm');
+            $('#facetsSection').addClass('col-sm-5');
+        }
+        else {
+            $('#mainContent').removeClass('ShowRefineSectionsInTab')
+            $('#facetsSection').removeClass('col-sm-5');
+            $('#facetsSection').addClass('hidden-sm');
+        }
+    });
+
+    $('#CloseRefineDivXs').click(function () {
+        if ($('#mainContent.hidden-xs').length == 0) {
+            $('#mainContent').addClass('hidden-xs')
+            $('#facetsSection').removeClass('hidden-xs');
+
+        }
+        else {
+            $('#mainContent').removeClass('hidden-xs')
+            $('#facetsSection').addClass('hidden-xs');
+        }
+    });
+
+    $(document).ready(function () {
+        //  var searchTerm = '';
+        //  $('#txtSearch').val(searchTerm);
+        //   $('#txtSearchMobile').val(searchTerm);
+        var ddlRecsPerPageSelectedValue = '25';
+        if (ddlRecsPerPageSelectedValue != null) {
+            $('#ddlRecsPerPage option[value="' + ddlRecsPerPageSelectedValue + '"]').attr('selected', 'true');
+            $('#ddlRecsPerPage2 option[value="' + ddlRecsPerPageSelectedValue + '"]').attr('selected', 'true');
+        }
+
+        $("div[id^='hiddenContent_']").addClass('hiddenContentMarginXS');
+
+//        $("div[id^='hiddenContent_'] input.btnSaveMyBIp").addClass('RemoveMarginTopXS');
+    });
+</script>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="AdminCheckModal" tabindex="-1" role="dialog" aria-labelledby="AdminCheckModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="AdminCheckModalLabel">
+                        Admin User Authentication
+                    </h2>
+                </div>
+                <div class="modal-body">
+                    <div id="dialog_adminCheck">
+                        <table id="tblAdminCheck" role="presentation" class="Width100">
+                            <tr>
+                                <td>
+                                    ID:
+                                </td>
+                                <td>
+                                    <label for="adminUID" class="labelForScreenReader">
+                                        User ID</label>
+                                    <input type="text" class="form-control" id="adminUID" onkeypress="return Enter_KeyPress(this,'ADMIN_DIALOG',event);"
+                                        tabindex="1001" size="20" /><br />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Password:
+                                </td>
+                                <td>
+                                    <label for="adminPWD" class="labelForScreenReader">
+                                        Password</label>
+                                    <input type="password" class="form-control" id="adminPWD" onkeypress="return Enter_KeyPress(this,'ADMIN_DIALOG',event);"
+                                        tabindex="1002" size="20" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" id="btnCancelAdminCredentials" class="btn
+    btn-secondary" value="Cancel" data-dismiss="modal" tabindex="1004" aria-label="Close" />
+                    <input type="button" id="btnCheckAdminCredentials" class="btn btn-default" value="OK"
+                        tabindex="1003" />
+                    <input id="hdnFromLink" type="hidden" value="" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal -->
+    <input type="hidden" id="ddlSearchType" value="quicksearch-all" />
+    <footer> <div class="row" role="contentInfo"> <div class="col-md-4"> <div class="siteNav">
+    <p>Site Navigation</p> <nav>
+        <a href="http://www.bowker.com/en-US/support/suptrain_sessions.shtml" target="_blank"><span
+        class="labelForScreenReader">Opens in new window</span>Training</a><br />
+        <a href="http://www.bowker.com/en-US/products/help/bip/faqs/index.html" target="_blank"><span
+        class="labelForScreenReader">Opens in new window</span>FAQs</a><br />
+        <a href="http://www.proquest.com.ezproxy.library.wisc.edu/go/contactus" target="_blank"><span class="labelForScreenReader">Opens
+        in new window</span>Contact</a><br />
+        <a href="http://www.proquest.com.ezproxy.library.wisc.edu/go/contactsupport" target="_blank"><span class="labelForScreenReader">Opens
+        in new window</span>Technical Support</a><br />
+        <a href="http://www.proquest.com.ezproxy.library.wisc.edu/about/privacy-statement.html" target="_blank"><span
+        class="labelForScreenReader">Opens in new window</span>Privacy Policy</a><br />
+    <a href="http://www.proquest.com.ezproxy.library.wisc.edu/about/terms-and-conditions.html" target="_blank"><span
+    class="labelForScreenReader">Opens in new window</span>Terms of Use</a><br />
+    </nav> </div> </div> <br /> <div class="col-md-8"> <div class="footerInfo">
+        <p>Books In Print&#174; powered by Bowker&#174; a ProQuest affiliate.</p>
+        <p>All rights in images of books or other publications included in BooksInPrint.com
+        are reserved by the original copyright owners. Lexile&#174; measures are &#169;<script type="text/javascript">document.write(new Date().getFullYear());</script>
+        Metametrics, Inc., and appear by permission, with all rights reserved. Lexile and
+        related marks are registered trademarks of Metametrics, Inc. &#174; <script type="text/javascript">document.write(new Date().getFullYear());</script> ProQuest.
+        All rights reserved.</p>
+    <br />
+    </div> </div> </div>
+    <div id="consent_blackbar"></div>
+    <div id="teconsent"></div>
+    <script async="async" src=//consent.truste.com/notice?domain=proquest.com&c=teconsent&js=nj&noticeType=bb crossorigin=""></script>
+    </footer>
+    <p id="backToTop">
+        <a class="well well-sm" href="#top"><i class="uxf-icon uxf-up-open-large" title="Move to top">
+        </i></a>
+    </p>
+    <!-- WIN-MV9IJOII824-->
+    <input id="hdnCdnImagePath" type="hidden" value="https://d3bowkl3v34ec5-cloudfront-net.ezproxy.library.wisc.edu/../../Images"
+    />
+</body>
+</html>
