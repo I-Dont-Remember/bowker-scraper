@@ -11,7 +11,6 @@ subject_list = [
   "Children AND Management",
   "Christian Life",
   "Christian AND Psychology",
-  "Christ-Psych",
   "Codependence",
   "Compulsive Behavior",
   "Conduct of Life",
@@ -80,8 +79,12 @@ subject_list = [
   "Young Men",
   "Young Men AND Religious",
   "Young Women",
-  "Young Women AND Religious"
+  "Young Women AND Religious",
   "Youth",
   "Youth AND Conduct of Life",
-  "Youth AND Religious Life"
+  "Youth AND Religious Life",
+  "Baseball",
+  "Personal Finance",
+  "Cookery",
+  "Total Titles"
 ]

@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 from subjects import subject_list
 import datetime
 import os.path
+import time
+
 global_cookie = ""
 
 # login uses saml, which is a huge suck to do in a script i guess
@@ -13,7 +15,7 @@ global_cookie = ""
 # https://stackoverflow.com/questions/52618451/python-requests-saml-login-redirect
 # https://stackoverflow.com/questions/22857889/ssl-error-using-python-requests-to-access-shibboleth-authenticated-server
 
-# parsed querystring 
+# parsed querystring
 # {'q': ['subject-all=[Conduct of Life] {{(publisher-date=[2000-01-01~To~2000-12-31])}}'], 'ast': ['se']}
 old = "http://www.booksinprint.com.ezproxy.library.wisc.edu/Search/Results?q=subject-all%3D[Conduct%20of%20Life]%20%7B%7B(publisher-date%3D[2000-01-01~To~2000-12-31])%7D%7D&ast=se"
 # print(parse_qs("q=subject-all%3D[Conduct%20of%20Life]%20%7B%7B(publisher-date%3D[2000-01-01~To~2000-12-31])%7D%7D&ast=se"))
@@ -25,7 +27,7 @@ old = "http://www.booksinprint.com.ezproxy.library.wisc.edu/Search/Results?q=sub
 def find_result_count(page):
     total = 0
     # TODO: fat file, so it takes a long time for BeautifulSoup to load it in,
-    # if this needs to be run a lot would want to find a way to minimize time/downloads  
+    # if this needs to be run a lot would want to find a way to minimize time/downloads
     soup = BeautifulSoup(page, "html.parser")
     no_results_div = soup.find("div", {"id": "divNoresults"})
     if no_results_div:
@@ -35,8 +37,11 @@ def find_result_count(page):
         # example:  <span id="resultsCount">Showing 1- 25 of 889</span>
         result_span = soup.find("span", {"id": "resultsCount"})
         words = result_span.text.split(" ")
-        total = int(words[-1])
-    
+        num_books = words[-1]
+        if "," in words[-1]:
+            num_books = (words[-1]).replace(",", "")
+        total = int(num_books)
+
     return total
 
 
@@ -68,10 +73,34 @@ def get_subject_total_for_year(name, year):
 
     # TODO: have to be able to handle AND queries and other special symbols
     #  ['subject-all=[Children] AND subject-all=[Management] '],  same for OR
-    query = {
-        "q": ["subject-all=[%s] {{(publisher-date=[%s])}}" %(name, date_range)],
-        "ast": ["pr"]
-    }
+    if "AND" in name:
+        split_name = name.split(" ")
+        query = {
+            "q": ["subject-all=[%s] AND subject-all=[%s] {{(publisher-date=[%s])}}" %(split_name[0], split_name[2], date_range)],
+            "ast": ["pr"]
+        }
+    elif "OR" in name:
+        split_name = name.split(" ")
+        if len(split_name) == 4:
+            query = {
+                "q": ["subject-all=[%s %s] OR subject-all=[%s] {{(publisher-date=[%s])}}" %(split_name[0], split_name[1], split_name[3], date_range)],
+                "ast": ["pr"]
+            }
+        else:
+            query = {
+                "q": ["subject-all=[%s] OR subject-all=[%s] OR subject-all=[%s] OR subject-all=[%s] {{(publisher-date=[%s])}}" %(split_name[0], split_name[2], split_name[4], split_name[6], date_range)],
+                "ast": ["pr"]
+            }
+    elif name == "Total Titles":
+        query = {
+            "q": ["{{(publisher-date=[%s])}}" %(date_range)],
+            "ast": ["pr"]
+        }
+    else:
+        query = {
+            "q": ["subject-all=[%s] {{(publisher-date=[%s])}}" %(name, date_range)],
+            "ast": ["pr"]
+        }
 
     if global_cookie is "":
         print("[!] cookie isn't set before trying to make requests")
@@ -80,7 +109,7 @@ def get_subject_total_for_year(name, year):
     page = acquire_page(global_cookie, query)
     if not page:
         raise SystemExit
-    
+
     return find_result_count(page)
 
 def get_unique_filename():
@@ -98,7 +127,10 @@ def get_unique_filename():
 
 
 def write_csv_headers(f):
-    f.write("year,Adult Children,Alcoholics Anonymous,Codependence\n")
+    f.write("Year")
+    for subject in subject_list:
+        f.write(",%s" % (subject))
+    f.write("\n")
 
 
 def main():
@@ -139,7 +171,7 @@ def main():
 
     global_cookie = input("Please provide the cookie necessary for requests: ")
 
-    
+
     with open(file_name, "a") as f:
         if needs_headers:
             write_csv_headers(f)
@@ -149,9 +181,10 @@ def main():
         # no -1 because range is non-inclusive
         for year in range(start_year, start_year + num_years):
             f.write("%d" %year)
-            for subject in [ "Adult Children","Alcoholics Anonymous", "Codependence"]:
+            for subject in subject_list:
                 total = get_subject_total_for_year(subject, year)
                 f.write(",%d"%total)
+            time.sleep(15)
             f.write("\n")
 
 if __name__ == "__main__":

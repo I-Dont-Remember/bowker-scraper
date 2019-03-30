@@ -9,3 +9,7 @@ TODO:
 * Add error handling for file writing issues
 * Add error handling for request issues
 * Add load-balancing for the many requests we have to make (Optional)
+<<<<<<< HEAD
+=======
+* Add excel equations at the end of the data
+>>>>>>> 495c1a17e7142237a7849daa0a5a93e8d955d685
