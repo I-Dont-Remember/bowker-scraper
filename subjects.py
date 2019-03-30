@@ -48,7 +48,7 @@ subject_list = [
   "Self-Culture",
   "Self-Esteem",
   "Self-Help",
-  "Self-Help AND Technology",
+  "Self-Help Techniques",
   "Self-Help Groups",
   "Self-Perception",
   "Self-Realization",
@@ -67,7 +67,9 @@ subject_list = [
   "Twelve-Step Programs",
   "Women AND Conduct of Life",
   "Young Men",
+  "Young Men AND Religious",
   "Young Women",
+  "Young Women AND Religious"
   "Youth",
   "Youth AND Conduct of Life",
   "Youth AND Religious"
