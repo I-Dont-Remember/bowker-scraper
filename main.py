@@ -2,8 +2,8 @@ import argparse
 import requests
 from bs4 import BeautifulSoup
 from subjects import subject_list
-import random
-
+import datetime
+import os.path
 global_cookie = ""
 
 # login uses saml, which is a huge suck to do in a script i guess
@@ -83,6 +83,20 @@ def get_subject_total_for_year(name, year):
     
     return find_result_count(page)
 
+def get_unique_filename():
+    # create unique filename such as bowker_scraper_30_Mar_2019_000.xlsx
+    count = 0
+    date = datetime.datetime.now()
+    workbookName = "bowker_scraper_" + str(date.day) + "_" + date.strftime("%b") + "_" + str(date.year) + "_" + "%03d" % (count) + ".csv"
+    while os.path.isfile(workbookName) and count < 1000:
+        count = count + 1
+        workbookName = "bowker_scraper_" + str(date.day) + "_" + date.strftime("%b") + "_" + str(date.year) + "_" + "%03d" % (count) + ".csv"
+    if (count >= 1000):
+        print("Could not create unique filename. Exiting...")
+        raise SystemExit
+    return workbookName
+
+
 def write_csv_headers(f):
     f.write("year,Adult Children,Alcoholics Anonymous,Codependence\n")
 
@@ -105,7 +119,7 @@ def main():
 
     if not args.file:
         needs_headers = True
-        file_name = "bowker-data%d.csv" % random.randint(1,500)
+        file_name = get_unique_filename()
         print("Creating file %s" % file_name)
     else:
         file_name = args.file

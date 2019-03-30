@@ -9,4 +9,4 @@ TODO:
 * Add error handling for file writing issues
 * Add error handling for request issues
 * Add load-balancing for the many requests we have to make (Optional)
-* better file naming convention
+* Add excel equations at the end of the data
