@@ -76,14 +76,14 @@ def main():
     print("Subject Scraper")
     ezproxy_cookie = input("Input your ezproxy cookie: ")
     aspauth_cookie = input("Input your ASPAUTH cookie: ")
-    first_letter = input("Letter to run requests against: ")
+    # first_letter = input("Letter to run requests against: ")
     # if len(ezproxy_cookie) == 0 or len(aspauth_cookie) == 0:
     #     print("[!] need the cookies to run on Bowker")
     #     return
-    first_letter = first_letter.upper()
-    if type(first_letter) is not str or len(first_letter) == 0:
-        print("Need a valid letter")
-        return
+    # first_letter = first_letter.upper()
+    # if type(first_letter) is not str or len(first_letter) == 0:
+    #     print("Need a valid letter")
+    #     return
 
     client = Client(ezproxy_cookie, aspauth_cookie)
 
@@ -92,11 +92,13 @@ def main():
     # zb = client.getSubjectsForTag("ZB")
     letters = list(string.ascii_uppercase)
     subjects = []
-    for letter in letters:
-        tag = "%s%s" %(first_letter,letter)
-        print(tag)
-        output_list = client.getSubjectsForTag(tag)
-        subjects += [x['tag'] for x in output_list]
+    for first_letter in letters:
+        for second_letter in letters:
+            tag = "%s%s" %(first_letter,second_letter)
+            print(tag)
+            output_list = client.getSubjectsForTag(tag)
+            subjects += [x['tag'] for x in output_list]
+        time.sleep(3)
 
     if not subjects:
         print("[!] no subjects found, something is wrong")
